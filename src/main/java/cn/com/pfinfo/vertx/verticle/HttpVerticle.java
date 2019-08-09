@@ -1,5 +1,6 @@
 package cn.com.pfinfo.vertx.verticle;
 
+import cn.hutool.json.JSONUtil;
 import cn.hutool.log.Log;
 import cn.hutool.log.LogFactory;
 import cn.hutool.log.StaticLog;
@@ -30,7 +31,7 @@ public class HttpVerticle extends AbstractVerticle {
 			event.queryParams();
 			event.session();
 			event.request();
-			event.response();
+			event.response().end(JSONUtil.createObj().put("msg", "success").toString());
 			event.parsedHeaders();
 			StaticLog.info(log, "请求了{}",event.request().path());
 			event.next();
