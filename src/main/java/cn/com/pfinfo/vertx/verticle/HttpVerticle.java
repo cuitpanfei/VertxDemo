@@ -33,6 +33,7 @@ public class HttpVerticle extends AbstractVerticle {
 			event.response();
 			event.parsedHeaders();
 			StaticLog.info(log, "请求了{}",event.request().path());
+			event.next();
 		});
 	}
 
